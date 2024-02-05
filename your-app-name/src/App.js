@@ -1,20 +1,18 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 function App() {
   const [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await fetch("/");
-        const jsonData = await response.json();
+      const response = await axios.get("/account");
 
-        setData(jsonData);
-        console.log(jsonData);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
+      // const jsonData = await response.json();
+      console.log(response);
+
+      setData(response);
     };
 
     fetchData();

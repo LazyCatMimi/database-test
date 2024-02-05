@@ -4,7 +4,6 @@ const app = express();
 const PORT = 3001;
 
 app.use(express.json());
-
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
@@ -18,6 +17,7 @@ const client = new MongoClient(uri, {
     deprecationErrors: true,
   },
 });
+
 async function run() {
   // Connect the client to the server	(optional starting in v4.7)
   await client.connect();
@@ -25,7 +25,6 @@ async function run() {
   await client.db("admin").command({ ping: 1 });
   console.log("Pinged your deployment. You successfully connected to MongoDB!");
 }
-run().catch(console.dir);
 
 async function connectAndQuery() {
   try {
@@ -40,18 +39,22 @@ async function connectAndQuery() {
   }
 }
 
-connectAndQuery();
+app.get("/account", async (req, res) => {
+  // res.send(JSON.stringify({ potato: "potato" }));
+  await client.connect();
+  const database = client.db("sample_analytics");
+  const collection = database.collection("accounts");
+  const result = await collection.findOne({ account_id: 198100 });
+  console.log(result);
+  res.send("hello");
+  // try {
+  //   await client.connect();
+  //   const database = client.db("sample_analytics");
+  //   const collection = database.collection("accounts");
 
-app.get("/", async (req, res) => {
-  try {
-    await client.connect();
-    const database = client.db("sample_analytics");
-    const collection = database.collection("accounts");
-
-    const result = await collection.findOne({ account_id: 198100 });
-    res.json(result);
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    res.status(500).json({ error: "Internal Server Error" });
-  }
+  //   const result = await collection.findOne({ account_id: 198100 });
+  // } catch (error) {
+  //   console.error("Error fetching data:", error);
+  //   res.status(500).json({ error: "Internal Server Error" });
+  // }
 });
