@@ -7,12 +7,12 @@ function App() {
   const [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("/account");
+      const response = await axios.get("http://localhost:3001/meow");
 
-      // const jsonData = await response.json();
-      console.log(response);
+      const jsonData = await response.data;
+      console.log(jsonData);
 
-      setData(response);
+      setData(jsonData);
     };
 
     fetchData();
@@ -21,7 +21,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>{data.id}</p>
+        <p>{data.account_id}</p>
         {/* <p>
           Edit <code>src/App.js</code> and save to reload.
         </p> */}

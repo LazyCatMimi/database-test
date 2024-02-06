@@ -1,9 +1,12 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
 import express from "express";
+import cors from "cors"
+const router = express.Router();
 const app = express();
 const PORT = 3001;
 
-app.use(express.json());
+// app.use(express.json());
+app.use(cors());
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
@@ -26,27 +29,16 @@ async function run() {
   console.log("Pinged your deployment. You successfully connected to MongoDB!");
 }
 
-async function connectAndQuery() {
-  try {
-    await client.connect();
-    const database = client.db("sample_analytics");
-    const collection = database.collection("accounts");
 
-    const result = await collection.findOne({ account_id: 198100 });
-    console.log(result);
-  } finally {
-    await client.close();
-  }
-}
-
-app.get("/account", async (req, res) => {
+app.get("/meow", async (req, res) => {
   // res.send(JSON.stringify({ potato: "potato" }));
   await client.connect();
   const database = client.db("sample_analytics");
   const collection = database.collection("accounts");
   const result = await collection.findOne({ account_id: 198100 });
   console.log(result);
-  res.send("hello");
+  res.send(JSON.stringify(result))
+  // res.send("hello");
   // try {
   //   await client.connect();
   //   const database = client.db("sample_analytics");
