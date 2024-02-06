@@ -1,16 +1,18 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
 import express from "express";
 import cors from "cors"
-const app = express();
 import 'dotenv/config';
+
+
 const PORT = process.env.PORT
 
+const app = express();
 app.use(express.json());
 app.use(cors());
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
 
 const client = new MongoClient(process.env.MONGODB_URI, {
   serverApi: {
@@ -20,13 +22,14 @@ const client = new MongoClient(process.env.MONGODB_URI, {
   },
 });
 
-async function run() {
-  await client.connect();
-  await client.db("admin").command({ ping: 1 });
-  console.log("Pinged your deployment. You successfully connected to MongoDB!");
-}
+// debug DB
+// async function run() {
+//   await client.connect();
+//   await client.db("admin").command({ ping: 1 });
+//   console.log("Pinged your deployment. You successfully connected to MongoDB!");
+// }
 
-
+// example route
 app.get("/meow", async (req, res) => {
 
   try {

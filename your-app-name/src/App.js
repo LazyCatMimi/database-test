@@ -2,30 +2,27 @@ import logo from "./logo.svg";
 import "./App.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-
-const BACKEND_ADDRESS = "http://localhost:3001"
+import { BACKEND_ADDRESS } from ".";
+// const BACKEND_ADDRESS = "http://localhost:3001"
 
 function App() {
   const [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`${BACKEND_ADDRESS}/meow`);
+      try{
+        // fetch data from backend
+        const response = await fetch(`${BACKEND_ADDRESS}/meow`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const jsonData = await response.json();
+        setData(jsonData);
 
-      // Check if the request was successful (status code 200)
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
       }
-    
-      // Parse the response JSON
-      const jsonData = await response.json();
-    
-      // Access the parsed data
-      console.log(jsonData);
-    
-      // Set the data in your component state
-      setData(jsonData);
+      catch(err){
+        console.error('Error fetching data:', err.message);
+      }
     };
-
     fetchData();
   }, []);
   return (
