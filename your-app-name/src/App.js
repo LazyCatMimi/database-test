@@ -3,15 +3,26 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+const BACKEND_ADDRESS = "http://localhost:3001"
+
 function App() {
   const [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("http://localhost:3001/meow");
+      const response = await fetch(`${BACKEND_ADDRESS}/meow`);
 
-      const jsonData = await response.data;
+      // Check if the request was successful (status code 200)
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+    
+      // Parse the response JSON
+      const jsonData = await response.json();
+    
+      // Access the parsed data
       console.log(jsonData);
-
+    
+      // Set the data in your component state
       setData(jsonData);
     };
 
