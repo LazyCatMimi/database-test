@@ -7,7 +7,7 @@ How to run both backend and frontend:
 
 Todo for team
 1. go to `/backend`
-2. create `.env` file in `/backend` and paste
+2. create `.env` file in `/backend` and paste mongo uri
 
 How to Start coding:
 1. Create a `somethingRoutes.js` (for example) with any unique name in `/routes` folder
