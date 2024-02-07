@@ -21,6 +21,9 @@ useEffect & fetch() to get data, as seen in `/src/app.js`
 backend:
 you will mostly be editing `index.js` and some more js files in `/routes` folder
 
+other notes:
+* you need to end the backend process and start it up again every time after you made a change. I'll figure how to make nodemon work so it will do it automatically a bit later! 
+
 --------------------------------------------------------
 Backend Installation notes
 backend todo
