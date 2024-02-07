@@ -10,7 +10,7 @@ Todo for team
 2. create `.env` file in `/backend` and paste mongo uri
 
 How to Start coding:
-1. Create a `somethingRoutes.js` (for example) with any unique name in `/routes` folder
+1. Create a `somethingRoutes.js` (example name)  in `/routes` folder
 2. in `somethingRoutes.js`, make a `somethingRoutes` function, write the routes, and export it (`export default somethingRoutes`)
 3. import the new `somethingRoutes` routes function into `index.js` in the main backend folder
 4. Use the new `somethingRoutes` function in `index.js` and pass app and client thru it: `exampleRoutes(app, client);`
