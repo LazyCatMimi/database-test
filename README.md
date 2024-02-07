@@ -24,15 +24,15 @@ you will mostly be editing `index.js` and some more js files in `/routes` folder
 --------------------------------------------------------
 Backend Installation notes
 backend todo
---`npm init -y`
---create `index.js`
---create `routes` files and folder 
+* `npm init -y`
+* create `index.js`
+* create `routes` files and folder 
 
 backend install
---cors
---express
---mongodb
---nodemon
+* cors
+* express
+* mongodb
+* nodemon
 
 
 
