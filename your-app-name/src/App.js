@@ -7,11 +7,13 @@ import { BACKEND_ADDRESS } from ".";
 
 function App() {
   const [data, setData] = useState([]);
+  const [dataC, setDataC] = useState("")
   useEffect(() => {
     const fetchData = async () => {
       try{
         // fetch data from backend
-        const response = await fetch(`${BACKEND_ADDRESS}/meow`);
+        const response = await fetch(`${BACKEND_ADDRESS}/accounts`);
+        
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -23,13 +25,32 @@ function App() {
         console.error('Error fetching data:', err.message);
       }
     };
+
+    const fetchData2 = async () => {
+      try{
+        // fetch data from backend
+        const response = await fetch(`${BACKEND_ADDRESS}/customers`);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const jsonData = await response.json();
+        setDataC(jsonData);
+
+      }
+      catch(err){
+        console.error('Error fetching data:', err.message);
+      }
+    };
     fetchData();
+    fetchData2();
   }, []);
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>{data.account_id}</p>
+        <p>account id: {data.account_id}</p>
+        <p>customer username: {dataC.username}</p>
         {/* <p>
           Edit <code>src/App.js</code> and save to reload.
         </p> */}
