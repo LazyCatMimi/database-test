@@ -17,7 +17,7 @@ How to Start coding:
 
 front end:<br>
 * useEffect & fetch() to get data, as seen in `/src/app.js`
-* also import BACKEND_ADDRESS and use that address to fetch things
+* also import `BACKEND_ADDRESS` and use that address to fetch things
 
 backend:<br>
 * you will mostly be editing `index.js` and some more js files in `/routes` folder
