@@ -1,14 +1,14 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
 import express from "express";
-import cors from "cors"
-import 'dotenv/config';
+import cors from "cors";
+import "dotenv/config";
 
 // import routes
 import exampleRoutes from "./routes/routes.js";
 
 // these should be in a .env file so github wont scream in your emails that the database link has been leaked
-const PORT = process.env.PORT
-const MONGODB_URI = process.env.MONGODB_URI
+const PORT = process.env.PORT;
+const MONGODB_URI = process.env.MONGODB_URI;
 
 // port to run server
 const app = express();
@@ -30,4 +30,3 @@ await client.connect();
 
 // use the imported routes here!!
 exampleRoutes(app, client);
-
