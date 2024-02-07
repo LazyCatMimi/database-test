@@ -1,10 +1,9 @@
 
-const routes =  (app, client) => {
+const exampleRoutes =  (app, client) => {
 // example route
 app.get("/accounts", async (req, res) => {
 
     try {
-      await client.connect();
       const database = client.db("sample_analytics");
       const collection = database.collection("accounts");
       const result = await collection.findOne({ account_id: 198100 });
@@ -14,13 +13,11 @@ app.get("/accounts", async (req, res) => {
       console.error("Error fetching data:", error);
       res.status(500).json({ error: "Internal Server Error" });
     }
-
   });
   
   app.get("/customers", async (req, res) => {
   
     try {
-      await client.connect();
       const database = client.db("sample_analytics");
       const collection = database.collection("customers");
       const result = await collection.findOne({ username: "fmiller" });
@@ -33,5 +30,5 @@ app.get("/accounts", async (req, res) => {
   });
 
 }
-export default routes
+export default exampleRoutes
   
