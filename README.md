@@ -15,17 +15,17 @@ How to Start coding:
 3. import the new `somethingRoutes` routes function into `index.js` in the main backend folder
 4. Use the new `somethingRoutes` function in `index.js` and pass app and client thru it: `exampleRoutes(app, client);`
 
-front end:
+front end:<br>
 useEffect & fetch() to get data, as seen in `/src/app.js`
 
-backend:
+backend:<br>
 you will mostly be editing `index.js` and some more js files in `/routes` folder
 
 other notes:
 * you need to end the backend process and start it up again every time after you made a change. I'll figure how to make nodemon work so it will do it automatically a bit later! 
 
 --------------------------------------------------------
-Backend Installation notes
+Backend Installation notes<br>
 backend todo
 * `npm init -y`
 * create `index.js`
