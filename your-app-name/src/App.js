@@ -44,6 +44,27 @@ function App() {
     };
     fetchData();
     fetchData2();
+
+
+    // Shortened version by ChatGPT 
+    // const fetchData = async (endpoint, setDataFunction) => {
+    //   try {
+    //     // Fetch data from the backend
+    //     const response = await fetch(`${BACKEND_ADDRESS}${endpoint}`);
+    
+    //     if (!response.ok) {
+    //       throw new Error(`HTTP error! Status: ${response.status}`);
+    //     }
+    //     const jsonData = await response.json();
+    //     setDataFunction(jsonData);
+    //   } catch (error) {
+    //     console.error('Error fetching data:', error.message);
+    //   }
+    // };
+    
+    // // Usage example:
+    // fetchData('/accounts', setData);
+    // fetchData('/customers', setDataC);
   }, []);
   return (
     <div className="App">
